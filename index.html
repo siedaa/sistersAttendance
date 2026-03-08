@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sisters Attendance System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+    <header class="logo-header">
+        <img src="logo.png" alt="Organization Logo" id="orgLogo">
+        <h1 id="mainTitle">Sisters Meeting Attendance</h1>
+    </header>
+    <div class="card">
+        <h3>Meeting Details</h3>
+
+            <div class="input-group">
+                <label>Meeting Date:</label>
+                <input type="date" id="meetingDate">
+            </div>
+            <div class="input-group">
+                <label>Meeting Topic:</label>
+                <input type="text" id="meetingTopic" placeholder="e.g. Importance of Patience">
+            </div>
+        </div>
+
+        <div class="card">
+            <table>
+               <thead>
+    <tr>
+        <th>No.</th> <th>Sister's Name</th>
+        <th>Present</th>
+    </tr>
+</thead>
+                    
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+
+        <div class="summary-card">
+            <p>Total Sisters: <span id="totalCount">4</span></p>
+            <p>Present: <span id="presentCount">0</span></p>
+            <p>Absent: <span id="absentCount">4</span></p>
+        </div>
+    </div>
+    <div class="actions">
+    <button id="saveBtn">Save Attendance</button>
+</div>
+
+<!--saved hsitory code-->
+
+<div class="card">
+    <h3>Saved History</h3>
+    <ul id="historyList" style="list-style: none; padding: 0;">
+        </ul>
+</div>
+<div id="detailsCard" class="card" style="display: none; border: 2px solid #27ae60;">
+    <h3 id="detailsTitle">Meeting Details</h3>
+    <p><strong>Topic:</strong> <span id="detailsTopic"></span></p>
+    <ul id="detailsAttendanceList"></ul>
+    <button onclick="document.getElementById('detailsCard').style.display='none'">Close Details</button>
+</div>
+
+
+<hr>
+        <div class="admin-section" style="text-align: center; padding-bottom: 50px;">
+            <button id="adminBtn" class="secondary-btn">Open Admin Archive</button>
+            
+            <div id="archiveCard" class="card" style="display: none; margin-top: 20px; border: 1px dashed #7f8c8d;">
+                <h3>Admin Archive (Hidden Records)</h3>
+                <ul id="archiveList" style="list-style: none; padding: 0;"></ul>
+                <button onclick="document.getElementById('archiveCard').style.display='none'">Close Archive</button>
+                <button id="exportBtn" class="secondary-btn" style="background-color: #34495e;">Download All Data (CSV)</button>
+            </div>
+        </div>
+
+    </div> <script src="script.js"></script>
+</body>
+</html>
