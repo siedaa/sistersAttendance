@@ -189,3 +189,16 @@ th:first-child, td:first-child { width: 40px; text-align: center; font-weight: b
     max-width: 800px;
     margin: 20px auto;
 }
+/* popup animation designing on sisters name */
+.clickable-name {
+    color: #3498db;
+    cursor: pointer;
+    transition: color 0.2s;
+    font-weight: 500;
+}
+
+.clickable-name:hover {
+    color: #2980b9;
+    text-decoration: underline;
+    background-color: rgba(52, 152, 219, 0.05);
+}
