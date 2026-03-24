@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sisters Attendance System</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -26,21 +27,18 @@
             </div>
         </div>
 
-        <div class="card">
-            <table>
-               <thead>
-    <tr>
-        <th>No.</th> <th>Sister's Name</th>
-        <th>Present</th>
-    </tr>
-</thead>
-                    
-                </thead>
-                <tbody>
-                    
-                </tbody>
-            </table>
-        </div>
+       <div class="card">
+    <table>
+        <thead>
+            <tr>
+                <th>No.</th> 
+                <th>Sister's Name</th>
+                <th>Present</th>
+            </tr>
+        </thead>
+        <tbody id="listContainer"> </tbody>
+    </table>
+</div>
 
         <div class="summary-card">
             <p>Total Sisters: <span id="totalCount">4</span></p>
@@ -66,19 +64,77 @@
     <button onclick="document.getElementById('detailsCard').style.display='none'">Close Details</button>
 </div>
 
-
 <hr>
-        <div class="admin-section" style="text-align: center; padding-bottom: 50px;">
-            <button id="adminBtn" class="secondary-btn">Open Admin Archive</button>
-            
-            <div id="archiveCard" class="card" style="display: none; margin-top: 20px; border: 1px dashed #7f8c8d;">
-                <h3>Admin Archive (Hidden Records)</h3>
-                <ul id="archiveList" style="list-style: none; padding: 0;"></ul>
-                <button onclick="document.getElementById('archiveCard').style.display='none'">Close Archive</button>
-                <button id="exportBtn" class="secondary-btn" style="background-color: #34495e;">Download All Data (CSV)</button>
+<!--admin archive portion bro-->
+<div class="admin-section" style="text-align: center; padding-bottom: 50px;">
+    <button id="adminBtn" class="secondary-btn">Open Admin Archive</button>
+
+    <div id="archiveCard" class="card" style="display: none; margin-top: 20px; border: 1px dashed #7f8c8d; text-align: left;">
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding: 0 10px;">
+            <h3 style="margin: 0;">Admin Archive & Reporting</h3>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span id="lastUpdated" style="font-size: 10px; color: #95a5a6;">Not synced yet</span>
+                <button id="syncBtn" title="Sync Latest Data" style="background: none; border: none; cursor: pointer; font-size: 1.2rem; padding: 0; outline: none;">
+                    <span id="syncIcon" style="display: inline-block;">🔄</span>
+                </button>
             </div>
         </div>
 
+        <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; margin-bottom: 15px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center;">
+            <div>
+                <label style="font-size: 11px; display: block;">From:</label>
+                <input type="date" id="filterDateFrom" style="padding: 5px;">
+            </div>
+            <div>
+                <label style="font-size: 11px; display: block;">To:</label>
+                <input type="date" id="filterDateTo" style="padding: 5px;">
+            </div>
+            <div>
+                <label style="font-size: 11px; display: block;">Topic Search:</label>
+                <input type="text" id="filterTopic" placeholder="Search topic..." style="padding: 5px;">
+            </div>
+        </div>
+
+        <ul id="archiveList" style="list-style: none; padding: 0; max-height: 250px; overflow-y: auto; border-bottom: 1px solid #eee; margin-bottom: 15px;">
+            </ul>
+
+        <div style="margin-bottom: 20px; border-top: 1px solid #eee; padding-top: 15px;">
+            <button id="showLeaderboardBtn" class="secondary-btn" style="background-color: #27ae60; width: 100%; margin-bottom: 10px;">
+                📊 View Sisters Performance Rank
+            </button>
+            <div id="leaderboardContainer" style="display:none; background:#fff; padding:15px; border-radius:8px; border: 1px solid #ddd; max-height:300px; overflow-y:auto;">
+                </div>
+        </div>
+
+        <div class="admin-actions" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+            <button class="secondary-btn" style="background-color: #7f8c8d;" onclick="document.getElementById('archiveCard').style.display='none'">Close</button>
+            <button id="printFilteredBtn" class="secondary-btn" style="background-color: #8e44ad;">Print Filtered PDF</button>
+            <button id="exportBtn" class="secondary-btn" style="background-color: #34495e;">Full CSV Export</button>
+        </div>
+    </div> 
+    
+</div>
+<!--signature 
+<div style="text-align: center; padding: 30px 0; opacity: 0.6; user-select: none;">
+    <span style="font-family: 'Dancing+Script', cursive; font-size: 1.4rem; color: #7f8c8d; border-top: 1px solid #eee; padding-top: 10px;">
+        Designed & Developed by Maha
+    </span>
+</div>
+-->
+<!--signature in use -->
+       <div style="display: flex; justify-content: center; align-items: center; gap: 10px; padding: 20px 0; opacity: 0.7;">
+    <div style="width: 30px; height: 25px; border: 2px solid #34495e; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; color: #34495e; border-radius: 4px;">
+        SMF
+    </div>
+    <span style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #34495e;">
+        System Design v2.0
+    </span>
+</div> 
+<div id="statsTooltip" style="display:none; position:fixed; background:#2c3e50; color:white; padding:10px; border-radius:8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index:1000; pointer-events:none; font-size:0.85em;">
+    </div>
+    <script src="sisters.js"></script>
     </div> <script src="script.js"></script>
+    
 </body>
 </html>
